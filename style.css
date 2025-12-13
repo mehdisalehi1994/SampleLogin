@@ -1,0 +1,666 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+    color: #fff;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    direction: rtl;
+    padding: 20px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container{
+    position: relative;
+    width: 750px;
+    height: 450px;
+    border: 2px solid #4a9eff;
+    box-shadow: 0 0 25px #4a9eff;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.container .form-box{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-box.Login{
+    left: 0;
+    padding: 0 40px;
+}
+
+.form-box.Login .animation{
+    transform: translateX(0%);
+    transition: .7s;
+    opacity: 1;
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Login .animation{
+    transform: translateX(-120%);
+    opacity: 0;
+    transition-delay: calc(.1s * var(--D));
+}
+
+.form-box.Register{
+    right: 0;
+    padding: 0 60px;
+}
+
+.form-box.Register .animation{
+    transform: translateX(120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .form-box.Register .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0px);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.form-box h2{
+    font-size: 32px;
+    text-align: center;
+}
+
+.form-box .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-top: 25px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    border-bottom: 2px solid #fff;
+    padding-right: 23px;
+    padding-left: 23px;
+    text-align: right;
+    direction: rtl;
+    transition: .5s;
+}
+
+.input-box input:focus,
+.input-box input:valid{
+    border-bottom: 2px solid #4a9eff;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    transition: .5s;
+    pointer-events: none;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+    color: #4a9eff;
+}
+
+.input-box box-icon{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 18px;
+    transform: translateY(-50%);
+    color: #fff;
+}
+
+.input-box input:focus ~ box-icon,
+.input-box input:valid ~ box-icon{
+    color: #4a9eff;
+}
+
+.btn{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid #4a9eff;
+    overflow: hidden;
+    z-index: 1;    
+}
+
+.btn::before{
+    content: "";
+    position: absolute;
+    height: 300%;
+    width: 100%;
+    background: linear-gradient(#1a1a2e, #4a9eff, #1a1a2e, #4a9eff);
+    top: -100%;
+    left: 0;
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover:before{
+    top: 0;
+}
+
+.regi-link{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.regi-link a{
+    text-decoration: none;
+    color: #4a9eff;
+    font-weight: 600;
+}
+
+.regi-link a:hover{
+    text-decoration: underline;
+}
+
+.info-content{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-content.Login{
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+
+.info-content.Login .animation{
+    transform: translateX(0);
+    transition: .7s ease;
+    transition-delay: calc(.1s * var(--S));
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.container.active .info-content.Login .animation{
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--D));
+}
+
+.info-content.Register{
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 38px;
+    pointer-events: none;
+}
+
+.info-content.Register .animation{
+    transform: translateX(-120%);
+    transition: .7s ease;
+    opacity: 0;
+    filter: blur(10PX);
+    transition-delay: calc(.1s * var(--S));
+}
+
+.container.active .info-content.Register .animation{
+    transform: translateX(0%);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--li));
+}
+
+.info-content h2{
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 1.3;
+}
+
+.info-content p{
+    font-size: 16px;
+}
+
+.container .curved-shape{
+    position: absolute;
+    right: 0;
+    top: -5px;
+    height: 600px;
+    width: 850px;
+    background: linear-gradient(45deg, #1a1a2e, #4a9eff);
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin: bottom right;
+    transition: 1.5s ease;
+    transition-delay: 1.6s;
+}
+
+.container.active .curved-shape{
+    transform: rotate(0deg) skewY(0deg);
+    transition-delay: .5s;
+}
+
+.container .curved-shape2{
+    position: absolute;
+    left: 250px;
+    top: 100%;
+    height: 700px;
+    width: 850px;
+    background: #1a1a2e;
+    border-top: 3px solid #4a9eff;
+    transform: rotate(0deg) skewY(0deg);
+    transform-origin: bottom left;
+    transition: 1.5s ease;
+    transition-delay: .5s;
+}
+
+.container.active .curved-shape2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.2s;
+}
+
+/* Mobile Toggle Buttons */
+.mobile-toggle{
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 25px;
+    padding: 5px;
+    z-index: 1000;
+    border: 1px solid #4a9eff;
+}
+
+.toggle-btn{
+    padding: 10px 30px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Vazirmatn', 'Tahoma', 'Arial', sans-serif;
+}
+
+.toggle-btn.active{
+    background: #4a9eff;
+    color: #1a1a2e;
+}
+
+/* ========================================
+   Responsive Design - تبلت بزرگ
+======================================== */
+@media (max-width: 992px) {
+    .container{
+        width: 650px;
+        height: 420px;
+    }
+
+    .form-box.Login{
+        padding: 0 30px;
+    }
+
+    .form-box.Register{
+        padding: 0 50px;
+    }
+
+    .form-box h2{
+        font-size: 28px;
+    }
+
+    .info-content.Login{
+        padding: 0 30px 50px 120px;
+    }
+
+    .info-content.Register{
+        padding: 0 120px 50px 30px;
+    }
+
+    .info-content h2{
+        font-size: 32px;
+    }
+
+    .info-content p{
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   Responsive Design - تبلت
+======================================== */
+@media (max-width: 768px) {
+    body{
+        padding: 15px;
+    }
+
+    .container{
+        width: 550px;
+        height: 500px;
+    }
+
+    .form-box.Login{
+        padding: 0 25px;
+    }
+
+    .form-box.Register{
+        padding: 0 40px;
+    }
+
+    .form-box h2{
+        font-size: 26px;
+    }
+
+    .form-box .input-box{
+        margin-top: 20px;
+    }
+
+    .info-content.Login{
+        padding: 0 25px 40px 100px;
+    }
+
+    .info-content.Register{
+        padding: 0 100px 40px 25px;
+    }
+
+    .info-content h2{
+        font-size: 28px;
+    }
+
+    .info-content p{
+        font-size: 13px;
+    }
+
+    .container .curved-shape{
+        width: 750px;
+        height: 550px;
+    }
+
+    .container .curved-shape2{
+        width: 750px;
+        height: 650px;
+        left: 200px;
+    }
+}
+
+/* ========================================
+   Responsive Design - موبایل (کلیدی)
+======================================== */
+@media (max-width: 576px) {
+    body{
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+
+    .container{
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 550px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* مخفی کردن curved shapes در موبایل */
+    .container .curved-shape,
+    .container .curved-shape2{
+        display: none;
+    }
+
+    /* تنظیم form boxes */
+    .container .form-box{
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 40px 25px !important;
+    }
+
+    .form-box.Login{
+        left: auto;
+    }
+
+    .form-box.Register{
+        right: auto;
+        display: none;
+    }
+
+    /* نمایش فرم فعال در موبایل */
+    .container.active .form-box.Login{
+        display: none;
+    }
+
+    .container.active .form-box.Register{
+        display: flex;
+    }
+
+    /* انیمیشن‌های موبایل */
+    .form-box.Login .animation,
+    .container.active .form-box.Login .animation{
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+        filter: blur(0) !important;
+    }
+
+    .form-box.Register .animation,
+    .container.active .form-box.Register .animation{
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+        filter: blur(0) !important;
+    }
+
+    .form-box h2{
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .form-box .input-box{
+        margin-top: 22px;
+        height: 48px;
+    }
+
+    .input-box input{
+        font-size: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .input-box label{
+        font-size: 15px;
+    }
+
+    .btn{
+        height: 48px;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .regi-link{
+        font-size: 13px;
+        margin: 18px 0 10px;
+    }
+
+    /* مخفی کردن info-content در موبایل */
+    .info-content.Login,
+    .info-content.Register{
+        display: none !important;
+    }
+
+    /* نمایش دکمه‌های toggle */
+    .mobile-toggle{
+        display: block;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin: 0 auto 30px auto;
+        width: fit-content;
+    }
+
+    .toggle-btn{
+        padding: 12px 35px;
+        font-size: 15px;
+    }
+}
+
+/* ========================================
+   Responsive Design - موبایل کوچک
+======================================== */
+@media (max-width: 420px) {
+    body{
+        padding: 8px;
+        padding-top: 20px;
+    }
+
+    .container{
+        min-height: 520px;
+        border-radius: 12px;
+    }
+
+    .container .form-box{
+        padding: 35px 20px !important;
+    }
+
+    .form-box h2{
+        font-size: 26px;
+    }
+
+    .form-box .input-box{
+        margin-top: 20px;
+        height: 46px;
+    }
+
+    .input-box input{
+        font-size: 14px;
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .input-box label{
+        font-size: 14px;
+    }
+
+    .input-box box-icon{
+        font-size: 16px;
+    }
+
+    .btn{
+        height: 46px;
+        font-size: 15px;
+    }
+
+    .regi-link{
+        font-size: 12px;
+    }
+
+    .toggle-btn{
+        padding: 10px 28px;
+        font-size: 14px;
+    }
+}
+
+/* ========================================
+   Responsive Design - موبایل خیلی کوچک
+======================================== */
+@media (max-width: 360px) {
+    .container{
+        min-height: 500px;
+    }
+
+    .container .form-box{
+        padding: 30px 18px !important;
+    }
+
+    .form-box h2{
+        font-size: 24px;
+    }
+
+    .form-box .input-box{
+        margin-top: 18px;
+        height: 44px;
+    }
+
+    .input-box input{
+        font-size: 13px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .input-box label{
+        font-size: 13px;
+    }
+
+    .btn{
+        height: 44px;
+        font-size: 14px;
+    }
+
+    .regi-link{
+        font-size: 11px;
+        margin: 15px 0 8px;
+    }
+
+    .toggle-btn{
+        padding: 10px 25px;
+        font-size: 13px;
+    }
+}
+
+/* ========================================
+   فیکس‌های عمومی موبایل
+======================================== */
+@media (max-width: 576px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+        overflow-x: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* غیرفعال کردن زوم */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
